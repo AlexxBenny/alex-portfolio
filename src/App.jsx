@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Suspense, lazy, useState } from "react";
+import { motion } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import SystemGraph from "./components/SystemGraph.jsx";
 import Projects from "./components/Projects.jsx";
-import Experience from "./components/Experience.jsx";
-import Contact from "./components/Contact.jsx";
+
+const Experience = lazy(() => import("./components/Experience.jsx"));
+const Contact = lazy(() => import("./components/Contact.jsx"));
 
 const sections = [
   { id: "hero", label: "Overview" },
@@ -24,6 +25,8 @@ const scrollToSection = (id) => {
 
 function App() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [loadExperience, setLoadExperience] = useState(false);
+  const [loadContact, setLoadContact] = useState(false);
 
   return (
     <div className="relative min-h-screen bg-background text-slate-100 selection:bg-sky-500/40 selection:text-sky-50">
@@ -63,11 +66,30 @@ function App() {
       </header>
 
       <main className="relative mx-auto flex max-w-6xl flex-col gap-24 px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">
+        <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 h-[600px] bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.18),_transparent_65%)]" />
         <Hero />
         <SystemGraph />
         <Projects />
-        <Experience />
-        <Contact />
+
+        <motion.div
+          className="h-4 w-px"
+          onViewportEnter={() => setLoadExperience(true)}
+        />
+        {loadExperience && (
+          <Suspense fallback={null}>
+            <Experience />
+          </Suspense>
+        )}
+
+        <motion.div
+          className="h-4 w-px"
+          onViewportEnter={() => setLoadContact(true)}
+        />
+        {loadContact && (
+          <Suspense fallback={null}>
+            <Contact />
+          </Suspense>
+        )}
       </main>
     </div>
   );
