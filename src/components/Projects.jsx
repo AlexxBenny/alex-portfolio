@@ -9,7 +9,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="relative scroll-mt-24 space-y-8 border-t border-slate-800/60 pt-16"
+      className="relative scroll-mt-24 space-y-12 border-t border-border pt-20"
     >
       <motion.div
         initial="hidden"
@@ -20,21 +20,22 @@ function Projects() {
         className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
       >
         <div>
-          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Systems, not demos.</h2>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300 md:text-base">
+          <h2 className="text-3xl font-display font-semibold text-white tracking-tight sm:text-4xl">Systems, not demos.</h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-300 md:text-lg">
             Every project here started from a concrete failure point — slow workflows, unreliable
             execution, or inaccessible interfaces — and ended as a system that actually runs in the
             real world.
           </p>
         </div>
-        <p className="max-w-xs text-xs text-slate-400 md:text-sm">
-          Tap a module to see what it does, how it&apos;s built, and what changed because of it.
+        <p className="max-w-xs text-sm text-slate-400 font-mono tracking-widest uppercase">
+          Select a module
         </p>
       </motion.div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-6">
         {projects.map((project, index) => {
           const isExpanded = expandedId === project.id;
+          const isCore = project.id === "aura" || project.id === "merlin";
 
           return (
             <motion.article
@@ -44,40 +45,54 @@ function Projects() {
               viewport={{ once: true, amount: 0.35 }}
               variants={fadeInUp}
               custom={0.04 * index}
-              className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/80"
+              className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                isExpanded 
+                  ? "bg-surface border-accent-cyan/40 shadow-cyan-glow" 
+                  : "bg-surface/50 border-border hover:border-accent-purple/40 hover:bg-surface/80"
+              }`}
             >
               <button
                 type="button"
                 onClick={() => setExpandedId(project.id)}
-                className="flex w-full items-stretch justify-between gap-4 px-4 py-4 text-left sm:px-5"
+                className="flex w-full items-stretch justify-between gap-4 px-5 py-5 text-left sm:px-6 relative group"
               >
-                <div className="flex flex-1 items-center gap-3">
+                {/* Subtle hover glow behind button text */}
+                <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/0 via-accent-cyan/0 to-transparent opacity-0 group-hover:from-accent-cyan/5 transition-opacity duration-500 rounded-t-2xl" />
+                
+                <div className="flex flex-1 items-center gap-4 relative z-10">
                   <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-lg border text-xs font-semibold ${
-                      project.id === "aura" || project.id === "merlin"
-                        ? "border-sky-400/80 bg-sky-500/10 text-sky-100 shadow-soft-glow"
-                        : "border-slate-800/80 bg-slate-900/80 text-slate-100"
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl border text-sm font-semibold transition-all duration-300 ${
+                      isCore
+                        ? "border-accent-cyan/80 bg-accent-cyan/10 text-accent-cyan shadow-cyan-glow"
+                        : isExpanded 
+                          ? "border-accent-purple/80 bg-accent-purple/10 text-accent-purple shadow-purple-glow"
+                          : "border-border bg-black/40 text-slate-300"
                     }`}
                   >
                     {project.name}
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-medium text-slate-100 sm:text-base">
+                    <p className={`text-base font-medium transition-colors ${isExpanded ? "text-white" : "text-slate-200"}`}>
                       {project.title}
                     </p>
-                    <p className="text-xs text-slate-400 sm:text-sm">{project.focus}</p>
+                    <p className="text-sm text-slate-400">{project.focus}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 text-xs text-slate-400 sm:text-sm">
-                  <span className="hidden rounded-full border border-slate-800/80 px-2 py-0.5 sm:inline">
-                    {project.id === "aura" || project.id === "merlin"
-                      ? "Core architecture"
-                      : "System module"}
+                
+                <div className="flex items-center gap-4 text-sm text-slate-400 relative z-10">
+                  <span className={`hidden rounded-full border px-3 py-1 text-xs tracking-wide transition-colors sm:inline ${
+                    isCore 
+                      ? "border-accent-cyan/30 text-accent-cyan/80 bg-accent-cyan/5" 
+                      : "border-border text-slate-400"
+                  }`}>
+                    {isCore ? "Core architecture" : "System module"}
                   </span>
                   <motion.span
                     animate={{ rotate: isExpanded ? 90 : 0 }}
-                    transition={{ duration: 0.18 }}
-                    className="text-slate-500"
+                    transition={{ duration: 0.2 }}
+                    className={`flex items-center justify-center h-8 w-8 rounded-full border transition-colors ${
+                      isExpanded ? "border-accent-cyan/30 text-accent-cyan bg-accent-cyan/10" : "border-border text-slate-500 group-hover:text-white group-hover:border-slate-600"
+                    }`}
                   >
                     ▸
                   </motion.span>
@@ -90,47 +105,49 @@ function Projects() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.22, ease: "easeOut" }}
-                    className="border-t border-slate-800/70 bg-slate-950/90 px-4 pb-4 pt-3 text-sm text-slate-300 sm:px-5 md:text-base"
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="border-t border-border/50 bg-black/30 px-5 pb-6 pt-5 text-base text-slate-300 sm:px-6"
                   >
-                    <div className="grid gap-4 md:grid-cols-[minmax(0,2.3fr)_minmax(0,1.7fr)]">
-                      <div className="space-y-2">
-                        <div>
-                          <p className="text-xs font-medium text-slate-400">What it does</p>
-                          <p className="mt-1 leading-relaxed text-slate-200">{project.what}</p>
+                    <div className="grid gap-6 md:grid-cols-[minmax(0,2.3fr)_minmax(0,1.7fr)]">
+                      <div className="space-y-5">
+                        <div className="relative pl-4 border-l-2 border-accent-cyan/30">
+                          <p className="text-xs font-mono tracking-widest text-accent-cyan">MODULE FUNCTION</p>
+                          <p className="mt-2 leading-relaxed text-slate-200">{project.what}</p>
                         </div>
-                        <div>
-                          <p className="text-xs font-medium text-slate-400">Architecture</p>
-                          <p className="mt-1 leading-relaxed text-slate-200">
+                        <div className="relative pl-4 border-l-2 border-accent-purple/30">
+                          <p className="text-xs font-mono tracking-widest text-accent-purple">ARCHITECTURE</p>
+                          <p className="mt-2 leading-relaxed text-slate-200">
                             {project.architecture}
                           </p>
                         </div>
                       </div>
-                      <div className="space-y-2">
-                        <div>
-                          <p className="text-xs font-medium text-slate-400">Impact</p>
-                          <p className="mt-1 leading-relaxed text-slate-200">{project.impact}</p>
+                      
+                      <div className="space-y-5">
+                        <div className="relative pl-4 border-l-2 border-emerald-500/30">
+                          <p className="text-xs font-mono tracking-widest text-emerald-400">IMPACT METRICS</p>
+                          <p className="mt-2 leading-relaxed text-slate-200">{project.impact}</p>
                         </div>
-                        <div className="mt-2 rounded-lg border border-slate-800/80 bg-slate-900/60 p-3">
-                          <p className="text-xs font-medium text-slate-400">Execution path</p>
-                          <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-slate-300">
-                            <span className="rounded-full bg-sky-500/10 px-2 py-0.5 text-sky-200">
+                        
+                        <div className="mt-4 rounded-xl border border-border bg-black/40 p-4">
+                          <p className="text-[10px] font-mono tracking-widest text-slate-400 mb-3">EXECUTION PATH</p>
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-300">
+                            <span className="rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-2.5 py-1 text-accent-cyan">
                               Intent
                             </span>
-                            <span className="h-px w-4 bg-slate-700" />
-                            <span className="rounded-full bg-slate-800/80 px-2 py-0.5">
+                            <span className="text-slate-600">→</span>
+                            <span className="rounded-full border border-border bg-surface px-2.5 py-1">
                               Planning
                             </span>
-                            <span className="h-px w-4 bg-slate-700" />
-                            <span className="rounded-full bg-slate-800/80 px-2 py-0.5">
+                            <span className="text-slate-600">→</span>
+                            <span className="rounded-full border border-border bg-surface px-2.5 py-1">
                               Tools / Skills
                             </span>
-                            <span className="h-px w-4 bg-slate-700" />
-                            <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-emerald-200">
+                            <span className="text-slate-600">→</span>
+                            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-400">
                               Execution
                             </span>
-                            <span className="h-px w-4 bg-slate-700" />
-                            <span className="rounded-full bg-slate-800/80 px-2 py-0.5">
+                            <span className="text-slate-600">→</span>
+                            <span className="rounded-full border border-border bg-surface px-2.5 py-1">
                               Observability
                             </span>
                           </div>

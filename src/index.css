@@ -2,44 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  @apply bg-background text-slate-100 antialiased;
+@layer base {
+  html,
+  body {
+    @apply bg-background text-slate-100 antialiased overflow-x-hidden;
+  }
+
+  body {
+    @apply min-h-screen selection:bg-accent/30 selection:text-white;
+  }
 }
 
-body {
-  @apply min-h-screen;
-}
-
+/* Custom Scrollbar for space theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: theme('colors.background');
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
+  background: theme('colors.slate.800');
   border-radius: 999px;
+  border: 2px solid theme('colors.background');
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.slate.600');
+}
+
+/* Base Overlays */
 .noise-overlay {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  opacity: 0.1;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.8'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  z-index: 50;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-.grid-overlay {
+/* Space Grid Overlay */
+.space-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
-  position: fixed;
-  inset: 0;
-  opacity: 0.14;
-  background-image: linear-gradient(rgba(15, 23, 42, 0.7) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.7) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.75), transparent 60%);
+  background-size: 100px 100px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 10%, transparent 70%);
+}
+
+.glass-panel {
+  @apply bg-surface backdrop-blur-xl border border-border shadow-glass rounded-2xl;
+}
+
+/* Prevent scrollbar shift */
+html {
+  scrollbar-gutter: stable;
 }
