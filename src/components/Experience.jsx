@@ -18,12 +18,12 @@ function Experience() {
       >
         <div>
           <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
-            What my work has changed in practice.
+            Where I&apos;ve applied these ideas.
           </h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300 md:text-base">
-            From internships to personal systems like MERLIN and Smart Glasses, I focus on
-            measurable changes: fewer API calls, faster academic workflows, and safer, more
-            observable AI execution.
+            From MERLIN to work at Recode AI Solutions and ICT Academy of Kerala, I focus on one
+            thing: making AI systems behave predictably in production — fewer wasted calls, faster
+            flows, and clearer traces.
           </p>
         </div>
         <p className="max-w-xs text-xs text-slate-400 md:text-sm">

@@ -35,17 +35,16 @@ function SystemGraph() {
         className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
       >
         <div>
-          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
-            How I decompose AI systems.
-          </h2>
+          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Most AI breaks at execution.</h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300 md:text-base">
-            I design agent stacks as explicit systems: reasoning engines, memory surfaces, execution
-            layers, and skill registries that can be observed, tested, and evolved independently.
+            They generate responses but fail to act reliably in real environments. I design stacks
+            where LLM reasoning, structured execution pipelines, and evolving memory systems are
+            separate, observable pieces of one system.
           </p>
         </div>
         <p className="max-w-xs text-xs text-slate-400 md:text-sm">
-          Tap or hover nodes to explore how each subsystem behaves. The goal is a deterministic
-          pipeline over probabilistic models.
+          Tap or hover to see how MERLIN, execution, memory, and skills work together to turn AI
+          from something that “talks” into something that actually “does”.
         </p>
       </motion.div>
 

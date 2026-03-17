@@ -47,17 +47,17 @@ function Hero() {
             <div>
               <p className="text-sm font-medium text-slate-200 md:text-base">Alex Benny</p>
               <p className="text-xs text-slate-400 md:text-sm">
-                AI systems engineer · deterministic, agentic architectures
+                I build deterministic AI systems that plan, reason, and execute.
               </p>
             </div>
           </div>
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
-            I build deterministic AI systems that think, plan, and execute.
+            I build deterministic AI systems that don&apos;t just respond — they execute.
           </h1>
           <p className="max-w-xl text-sm leading-relaxed text-slate-300 md:text-base">
-            I design agent stacks where reasoning, memory, execution, and observability are
-            separate, testable systems. The work is less about prompts and more about contracts,
-            traces, and reliability.
+            Most AI systems stop at generation. I focus on agentic architectures, execution
+            pipelines, and memory systems so that AI can reliably plan, coordinate, and complete
+            real tasks — not just talk about them.
           </p>
         </motion.div>
 

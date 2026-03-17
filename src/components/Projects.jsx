@@ -4,7 +4,7 @@ import { projects } from "../data/projects.js";
 import { fadeInUp } from "../utils/motion.js";
 
 function Projects() {
-  const [expandedId, setExpandedId] = useState("aura");
+  const [expandedId, setExpandedId] = useState("merlin");
 
   return (
     <section
@@ -20,12 +20,11 @@ function Projects() {
         className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
       >
         <div>
-          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">
-            Systems that are already in the world.
-          </h2>
+          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Systems, not demos.</h2>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300 md:text-base">
-            Each project is treated as a module in a larger AI operating system — with clear
-            responsibilities, boundaries, and feedback loops.
+            Every project here started from a concrete failure point — slow workflows, unreliable
+            execution, or inaccessible interfaces — and ended as a system that actually runs in the
+            real world.
           </p>
         </div>
         <p className="max-w-xs text-xs text-slate-400 md:text-sm">

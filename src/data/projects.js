@@ -41,49 +41,50 @@ export const projects = [
   {
     id: "merlin",
     name: "MERLIN",
-    title: "Agentic AI execution & desktop automation",
-    focus: "Deterministic orchestration · Safety rails · Traceable execution",
+    title: "Cognitive AI execution system",
+    focus: "Deterministic orchestration · Typed missions · Reliable desktop automation",
     what:
-      "MERLIN is a cognitive execution architecture that powers desktop-scale and backend agent systems, operating across applications, files, and APIs while remaining fully observable and interruptible.",
+      "MERLIN is a JARVIS-style desktop AI system built for reliable execution, not just conversation. It plans missions, coordinates tools, and runs work as background jobs instead of one-off prompts.",
     architecture:
-      "Graph-based planner plus deterministic execution coordinator with bounded iteration control, typed failure handling, JSON-safe compilation, and conservative execution gating.",
+      "Hybrid design: LLMs handle planning and structural reasoning, while deterministic pipelines own execution. An ExecutionCoordinator decides when to trust the model versus a scripted path, with typed mission steps, bounded retries, and outcome-aware replanning.",
     impact:
-      "Turned multi-minute manual workflows into reliable automations with sub-15ms local skill execution latency and full, replayable traces."
+      "Turns multi-step manual workflows into repeatable automations with sub-15ms local skill execution, persistent job scheduling, and replayable traces for every run."
   },
   {
     id: "smart-acad",
     name: "Smart-Acad",
-    title: "Intelligent academic platform",
-    focus: "NLP automation · Evaluation pipelines",
+    title: "Academic automation platform",
+    focus: "Student–faculty workflows · Analytics · Automation",
     what:
-      "Smart-Acad is an academic productivity platform that helps students and institutions analyze, track, and improve learning outcomes.",
+      "Smart-Acad was built to fix slow, manual coordination between students and faculty — from sharing resources to tracking performance.",
     architecture:
-      "Modular NLP services for extraction and evaluation, feeding into a real-time analytics dashboard.",
-    impact: "Won competition recognition and significantly reduced manual review time for academic content."
+      "Flask-based backend with NLP modules for content handling, analytics pipelines, and dashboards that surface real academic signals instead of raw data.",
+    impact:
+      "Automated key academic workflows, reduced manual overhead, and won ICTAK Techathlon as validation that the system solved a real institutional problem."
   },
   {
     id: "fluento",
     name: "Fluento",
-    title: "AI language learning system",
-    focus: "Adaptive curriculum · Conversational agents",
+    title: "Adaptive AI language learning",
+    focus: "Pronunciation feedback · Personalized exercises · Real-time adaptation",
     what:
-      "Fluento uses AI tutors to adaptively shape language learning paths around a learner’s intent, context, and performance.",
+      "Fluento was my answer to static language learning apps. It adapts in real time, generating exercises around the learner and reacting to how they actually speak.",
     architecture:
-      "Conversation engine + spaced-repetition scheduler + content generation pipeline tuned for skill acquisition.",
+      "GenAI-backed content generation with speech analysis for pronunciation, wired into a feedback loop that adjusts difficulty and focus based on performance.",
     impact:
-      "Increased session engagement and learning retention by focusing on feedback loops instead of generic drills."
+      "Built during EDEN 4.0 and won first place because it demonstrated how AI can make language learning feel responsive instead of pre-scripted."
   },
   {
     id: "smart-glasses",
     name: "Smart Glasses",
-    title: "Assistive AI system",
-    focus: "On-device inference · Real-time assistance",
+    title: "Assistive AI system for vision",
+    focus: "Real-time perception · Voice interaction · On-device support",
     what:
-      "Smart Glasses is an assistive interface that surfaces information and guidance in real time without overwhelming the wearer.",
+      "Smart Glasses is a real-time assistive system for visually impaired users, built to describe the world instead of just labeling it.",
     architecture:
-      "Lightweight perception models with a context-aware helper agent, optimized for latency and clarity.",
+      "Pipeline combining object detection, OCR, face recognition, and scene description, all wrapped in a voice-first interface.",
     impact:
-      "Provided accessible, real-time assistance while keeping interaction minimal and cognitively light."
+      "Pushed me into multi-model, real-time AI — balancing usefulness with cognitive load so information helps rather than overwhelms."
   }
 ];
 
