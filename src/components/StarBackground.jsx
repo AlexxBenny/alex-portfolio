@@ -10,26 +10,24 @@ export default function StarBackground() {
     const ctx = canvas.getContext("2d");
     let animationFrameId;
 
-    // Set canvas dimensions
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = document.documentElement.scrollHeight;
     };
-    
+
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
 
-    // Star properties
     const stars = [];
-    const numStars = 200;
+    const numStars = 150;
 
     for (let i = 0; i < numStars; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5,
-        speed: Math.random() * 0.5,
-        opacity: Math.random(),
+        radius: Math.random() * 1.0 + 0.2,
+        speed: Math.random() * 0.08 + 0.02,
+        opacity: Math.random() * 0.6 + 0.2,
         fadeDirection: Math.random() > 0.5 ? 1 : -1,
       });
     }
@@ -38,16 +36,16 @@ export default function StarBackground() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach((star) => {
-        // Move star
+        // Drift slowly upward
         star.y -= star.speed;
         if (star.y < 0) {
           star.y = canvas.height;
           star.x = Math.random() * canvas.width;
         }
 
-        // Twinkle effect
-        star.opacity += star.fadeDirection * 0.01;
-        if (star.opacity <= 0.1 || star.opacity >= 1) {
+        // Gentle twinkle
+        star.opacity += star.fadeDirection * 0.003;
+        if (star.opacity <= 0.15 || star.opacity >= 0.85) {
           star.fadeDirection *= -1;
         }
 
@@ -55,7 +53,6 @@ export default function StarBackground() {
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
-        ctx.closePath();
       });
 
       animationFrameId = requestAnimationFrame(render);
@@ -72,7 +69,8 @@ export default function StarBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none -z-20 opacity-60"
+      className="fixed inset-0 pointer-events-none"
+      style={{ zIndex: 0 }}
     />
   );
 }
