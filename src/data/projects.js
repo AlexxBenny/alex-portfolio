@@ -3,7 +3,7 @@ export const education = {
   degree: "B.Tech in Artificial Intelligence and Data Science",
   period: "2022 – 2026",
   location: "Kerala, India",
-  cgpa: "8.68 / 10.0",
+  cgpa: "8.72 / 10.0",
   honours: "Computational Biology",
   minor: "Electronics and Communication Engineering",
 };
@@ -65,10 +65,10 @@ export const experiences = [
 export const projects = [
   {
     id: "aura",
-    name: "A.U.R.A",
+    name: "MERLIN",
     subtitle: "Agentic AI Desktop Automation System",
     tech: ["Python", "LLMs", "OS APIs", "Speech Recognition", "TTS"],
-    github: "https://github.com/AlexxBenny/auraaiv3",
+    github: "https://github.com/AlexxBenny/Merlin",
     description:
       "A JARVIS-style desktop AI system with hybrid deterministic + LLM-routed architecture, sub-15ms local skill execution, structured multi-step planning, and voice-controlled floating UI with wake-word detection.",
     highlights: [
@@ -96,7 +96,7 @@ export const projects = [
     name: "Smart-Acad",
     subtitle: "Academic Resource Management Platform",
     tech: ["Python", "Flask", "PostgreSQL", "ML", "HTML", "CSS"],
-    github: null,
+    github: "https://github.com/AlexxBenny/Smart_Acad",
     description:
       "A cloud-based academic platform to streamline student–faculty coordination with automation modules and analytics dashboards.",
     highlights: [
@@ -110,7 +110,7 @@ export const projects = [
     name: "Fluento",
     subtitle: "AI Language Learning Platform",
     tech: ["Python", "GenAI", "Speech Analysis", "NLP"],
-    github: null,
+    github: "https://github.com/AlexxBenny/FLUENTO",
     description:
       "An adaptive GenAI-powered language learning platform with personalized exercises, AI-driven content generation, and pronunciation feedback.",
     highlights: [
