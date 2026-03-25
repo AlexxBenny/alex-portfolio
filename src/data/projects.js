@@ -69,6 +69,7 @@ export const projects = [
     subtitle: "Agentic AI Desktop Automation System",
     tech: ["Python", "LLMs", "OS APIs", "Speech Recognition", "TTS"],
     github: "https://github.com/AlexxBenny/Merlin",
+    deepDive: "/merlin",
     description:
       "A JARVIS-style desktop AI system with hybrid deterministic + LLM-routed architecture, sub-15ms local skill execution, structured multi-step planning, and voice-controlled floating UI with wake-word detection.",
     highlights: [

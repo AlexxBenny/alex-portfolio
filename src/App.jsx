@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import Skills from "./components/Skills.jsx";
@@ -6,6 +7,7 @@ import Experience from "./components/Experience.jsx";
 import Achievements from "./components/Achievements.jsx";
 import Contact from "./components/Contact.jsx";
 import StarBackground from "./components/StarBackground.jsx";
+import MerlinPage from "./components/MerlinPage.jsx";
 
 const sections = [
   { id: "hero", label: "About" },
@@ -24,7 +26,7 @@ const scrollToSection = (id) => {
   window.scrollTo({ top: absoluteY, behavior: "smooth" });
 };
 
-function App() {
+function HomePage() {
   return (
     <div className="relative min-h-screen bg-background text-slate-100 font-sans">
       <StarBackground />
@@ -70,6 +72,15 @@ function App() {
         </main>
       </motion.div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/merlin" element={<MerlinPage />} />
+    </Routes>
   );
 }
 
