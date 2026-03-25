@@ -108,6 +108,13 @@ function Projects() {
                       ))}
                     </ul>
 
+                    {project.deepDive && (
+                      <div className="mb-5 inline-flex items-center gap-2 rounded-lg border border-accent/15 bg-accent/[0.03] px-3.5 py-2 font-mono text-xs text-slate-400">
+                        <span className="text-slate-600">$</span>
+                        <span className="text-accent">pip install merlin-assistant</span>
+                      </div>
+                    )}
+
                     <div className="flex flex-wrap items-center gap-2">
                       {project.tech.map((t) => (
                         <span

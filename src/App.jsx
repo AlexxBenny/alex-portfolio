@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import Skills from "./components/Skills.jsx";
@@ -75,12 +76,42 @@ function HomePage() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname !== "/") {
+      // Deep-dive pages: disable browser scroll restoration and force top
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      const forceScroll = () => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+      forceScroll();
+      const t = setTimeout(forceScroll, 0);
+      return () => clearTimeout(t);
+    } else {
+      // Homepage: re-enable browser scroll restoration so
+      // pressing back returns to the previous scroll position
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+    }
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/merlin" element={<MerlinPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/merlin" element={<MerlinPage />} />
+      </Routes>
+    </>
   );
 }
 
