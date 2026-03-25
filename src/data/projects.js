@@ -3,7 +3,6 @@ export const education = {
   degree: "B.Tech in Artificial Intelligence and Data Science",
   period: "2022 – 2026",
   location: "Kerala, India",
-  cgpa: "8.72 / 10.0",
   honours: "Computational Biology",
   minor: "Electronics and Communication Engineering",
 };

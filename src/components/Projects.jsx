@@ -143,7 +143,7 @@ function Projects() {
                     <h3 className="text-base font-semibold text-white group-hover:text-accent transition-colors">
                       {project.name}
                     </h3>
-                    <p className="text-xs text-slate-500 mt-0.5">{project.subtitle}</p>
+                    <p className="text-sm text-slate-500 mt-0.5">{project.subtitle}</p>
                   </div>
                   {project.github && (
                     <a
@@ -157,14 +157,14 @@ function Projects() {
                   )}
                 </div>
 
-                <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">
+                <p className="text-[15px] text-slate-400 leading-relaxed mb-4 flex-1">
                   {project.description}
                 </p>
 
                 {/* Highlights */}
                 <ul className="space-y-1.5 mb-4">
                   {project.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-slate-500">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-500">
                       <span
                         className="mt-1 h-1 w-1 flex-shrink-0 rounded-full"
                         style={{ backgroundColor: accent.color + "80" }}

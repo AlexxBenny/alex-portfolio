@@ -87,7 +87,6 @@ function Hero() {
             <span className="hidden sm:inline">·</span>
             <span>{education.location}</span>
             <span className="hidden sm:inline">·</span>
-            <span>CGPA: {education.cgpa}</span>
           </div>
 
           <div className="flex items-center gap-4 justify-center md:justify-start pt-2">
