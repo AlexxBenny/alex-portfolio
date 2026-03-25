@@ -1,14 +1,17 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 
 export default function StarBackground() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    let animationFrameId;
+    if (!ctx) return;
+    let animationFrameId: number;
 
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
@@ -18,7 +21,14 @@ export default function StarBackground() {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
 
-    const stars = [];
+    const stars: {
+      x: number;
+      y: number;
+      radius: number;
+      speed: number;
+      opacity: number;
+      fadeDirection: number;
+    }[] = [];
     const numStars = 150;
 
     for (let i = 0; i < numStars; i++) {
@@ -36,14 +46,12 @@ export default function StarBackground() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach((star) => {
-        // Drift slowly upward
         star.y -= star.speed;
         if (star.y < 0) {
           star.y = canvas.height;
           star.x = Math.random() * canvas.width;
         }
 
-        // Gentle twinkle
         star.opacity += star.fadeDirection * 0.003;
         if (star.opacity <= 0.15 || star.opacity >= 0.85) {
           star.fadeDirection *= -1;
@@ -71,6 +79,7 @@ export default function StarBackground() {
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 0 }}
+      aria-hidden="true"
     />
   );
 }

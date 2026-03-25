@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { projects } from "../data/projects.js";
-import { fadeInUp } from "../utils/motion.js";
+"use client";
 
-/* ─── accent colors per project for visual variety ─── */
-const accents = {
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { projects } from "@/lib/data/projects";
+import { fadeInUp } from "@/lib/motion";
+
+const accents: Record<string, { color: string; gradient: string }> = {
   aura: { color: "#60a5fa", gradient: "from-blue-500/20 to-violet-500/20" },
   "smart-glasses": { color: "#34d399", gradient: "from-emerald-500/20 to-teal-500/20" },
   "smart-acad": { color: "#f59e0b", gradient: "from-amber-500/20 to-orange-500/20" },
   fluento: { color: "#a78bfa", gradient: "from-violet-500/20 to-fuchsia-500/20" },
 };
 
-function Projects() {
-  const featured = projects[0]; // MERLIN
+export default function Projects() {
+  const featured = projects[0];
   const rest = projects.slice(1);
 
   return (
@@ -31,11 +32,11 @@ function Projects() {
           Projects
         </h2>
         <p className="mt-3 max-w-xl text-base text-slate-400">
-          Systems I've designed and built — from agentic AI to assistive tech.
+          Systems I&apos;ve designed and built — from agentic AI to assistive tech.
         </p>
       </motion.div>
 
-      {/* ─── Featured project (MERLIN) ─── */}
+      {/* Featured project (MERLIN) */}
       <motion.article
         initial="hidden"
         whileInView="visible"
@@ -46,7 +47,6 @@ function Projects() {
         whileHover={{ y: -4 }}
         transition={{ type: "tween", duration: 0.2 }}
       >
-        {/* Top gradient shimmer */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
         <div className="p-6 sm:p-8">
@@ -75,7 +75,7 @@ function Projects() {
               )}
               {featured.deepDive && (
                 <Link
-                  to={featured.deepDive}
+                  href={featured.deepDive}
                   className="rounded-lg border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all inline-flex items-center gap-1.5"
                 >
                   Deep Dive
@@ -93,10 +93,7 @@ function Projects() {
 
           <div className="grid gap-2 sm:grid-cols-2 mb-5">
             {featured.highlights.map((h, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-2.5 text-sm text-slate-300"
-              >
+              <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/50" />
                 {h}
               </div>
@@ -104,7 +101,6 @@ function Projects() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* pip install badge */}
             <div className="rounded-md border border-accent/15 bg-accent/[0.04] px-3 py-1 font-mono text-[11px] text-slate-400">
               <span className="text-slate-600">$ </span>
               <span className="text-accent">pip install merlin-assistant</span>
@@ -122,7 +118,7 @@ function Projects() {
         </div>
       </motion.article>
 
-      {/* ─── Other projects — responsive grid ─── */}
+      {/* Other projects */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map((project, index) => {
           const accent = accents[project.id] || { color: "#94a3b8", gradient: "from-slate-500/20 to-slate-600/20" };
@@ -138,7 +134,6 @@ function Projects() {
               whileHover={{ y: -6 }}
               transition={{ type: "tween", duration: 0.2 }}
             >
-              {/* Top gradient bar */}
               <div className={`h-0.5 bg-gradient-to-r ${accent.gradient}`} />
 
               <div className="p-5 flex flex-col flex-1">
@@ -165,7 +160,6 @@ function Projects() {
                   {project.description}
                 </p>
 
-                {/* Highlights */}
                 <ul className="space-y-1.5 mb-4">
                   {project.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
@@ -178,7 +172,6 @@ function Projects() {
                   ))}
                 </ul>
 
-                {/* Tech tags */}
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {project.tech.map((t) => (
                     <span
@@ -197,5 +190,3 @@ function Projects() {
     </section>
   );
 }
-
-export default Projects;

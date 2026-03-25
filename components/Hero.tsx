@@ -1,6 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { education } from "../data/projects.js";
-import { fadeInUp } from "../utils/motion.js";
+import Image from "next/image";
+import { education } from "@/lib/data/projects";
+import { fadeInUp } from "@/lib/motion";
 
 const socials = [
   {
@@ -33,14 +36,14 @@ const socials = [
   },
 ];
 
-function Hero() {
+export default function Hero() {
   return (
     <section
       id="hero"
       className="relative flex min-h-[85vh] items-center pb-12 pt-8"
     >
       <div className="grid gap-12 md:gap-16 md:grid-cols-[auto_1fr] items-center w-full">
-        {/* Profile Photo — Left */}
+        {/* Profile Photo */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -50,19 +53,20 @@ function Hero() {
           className="flex justify-center md:justify-start"
         >
           <div className="relative group">
-            {/* Outer glow ring */}
             <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-accent/30 via-violet-500/20 to-transparent blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-            {/* Subtle rotating border ring */}
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent/25 to-violet-500/15" />
-            <img
+            <Image
               src="/Alex_passport.jpg"
-              alt="Alex Benny"
+              alt="Alex Benny — AI Systems Engineer"
+              width={256}
+              height={256}
+              priority
               className="relative h-52 w-52 md:h-64 md:w-64 rounded-full object-cover border-2 border-white/10"
             />
           </div>
         </motion.div>
 
-        {/* About — Right */}
+        {/* About */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -142,5 +146,3 @@ function Hero() {
     </section>
   );
 }
-
-export default Hero;

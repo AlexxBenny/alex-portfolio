@@ -1,8 +1,11 @@
-import { motion } from "framer-motion";
-import { achievements } from "../data/projects.js";
-import { fadeInUp } from "../utils/motion.js";
+"use client";
 
-function Achievements() {
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { achievements } from "@/lib/data/projects";
+import { fadeInUp } from "@/lib/motion";
+
+export default function Achievements() {
   return (
     <section
       id="achievements"
@@ -36,18 +39,17 @@ function Achievements() {
             transition={{ type: "tween", duration: 0.2 }}
             className="group relative rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden transition-all duration-300 hover:border-white/10"
           >
-            {/* Photo */}
             <div className="relative h-44 overflow-hidden">
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             </div>
 
-            {/* Info */}
             <div className="p-4">
               <p className="text-sm font-semibold text-white leading-snug">
                 {item.title}
@@ -55,11 +57,13 @@ function Achievements() {
               {item.event && (
                 <p className="text-xs text-slate-500 mt-1">{item.event}</p>
               )}
-              <span className={`inline-block mt-2.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
-                item.place === "Winner"
-                  ? "bg-amber-500/15 text-amber-300 border border-amber-500/25"
-                  : "bg-white/5 text-slate-400 border border-white/10"
-              }`}>
+              <span
+                className={`inline-block mt-2.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                  item.place === "Winner"
+                    ? "bg-amber-500/15 text-amber-300 border border-amber-500/25"
+                    : "bg-white/5 text-slate-400 border border-white/10"
+                }`}
+              >
                 {item.place === "Winner" ? "🏆 Winner" : `🥉 ${item.place}`}
               </span>
             </div>
@@ -69,5 +73,3 @@ function Achievements() {
     </section>
   );
 }
-
-export default Achievements;

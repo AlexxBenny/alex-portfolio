@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
-import { skills } from "../data/projects.js";
-import { fadeInUp } from "../utils/motion.js";
+"use client";
 
-/* accent colors for each skill category */
-const categoryAccents = {
+import { motion } from "framer-motion";
+import { skills } from "@/lib/data/projects";
+import { fadeInUp } from "@/lib/motion";
+
+const categoryAccents: Record<string, string> = {
   Programming: "#60a5fa",
   "AI Systems": "#a78bfa",
   "AI Infrastructure": "#f472b6",
@@ -21,7 +22,7 @@ const chipAnim = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.25 } },
 };
 
-function Skills() {
+export default function Skills() {
   return (
     <section
       id="skills"
@@ -55,7 +56,6 @@ function Skills() {
               custom={0.05 * i}
               className="group relative rounded-xl border border-white/5 bg-white/[0.02] p-5 transition-all duration-300 hover:border-white/10 overflow-hidden"
             >
-              {/* Accent bar */}
               <div
                 className="absolute inset-y-0 left-0 w-0.5 group-hover:w-1 transition-all duration-300"
                 style={{ backgroundColor: accent }}
@@ -98,5 +98,3 @@ function Skills() {
     </section>
   );
 }
-
-export default Skills;

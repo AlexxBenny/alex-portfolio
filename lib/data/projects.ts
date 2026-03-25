@@ -1,4 +1,46 @@
-export const education = {
+export interface Education {
+  institution: string;
+  degree: string;
+  period: string;
+  location: string;
+  honours: string;
+  minor: string;
+}
+
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
+export interface ExperienceItem {
+  id: string;
+  role: string;
+  company: string;
+  link?: string;
+  location: string;
+  period: string;
+  bullets: string[];
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  subtitle: string;
+  tech: string[];
+  github: string | null;
+  deepDive?: string;
+  description: string;
+  highlights: string[];
+}
+
+export interface Achievement {
+  title: string;
+  event: string;
+  place: string;
+  image: string;
+}
+
+export const education: Education = {
   institution: "Viswajyothi College of Engineering and Technology",
   degree: "B.Tech in Artificial Intelligence and Data Science",
   period: "2022 – 2026",
@@ -7,7 +49,7 @@ export const education = {
   minor: "Electronics and Communication Engineering",
 };
 
-export const skills = [
+export const skills: SkillGroup[] = [
   {
     category: "Programming",
     items: ["Python", "Java"],
@@ -34,7 +76,7 @@ export const skills = [
   },
 ];
 
-export const experiences = [
+export const experiences: ExperienceItem[] = [
   {
     id: "recode",
     role: "Software Developer Intern",
@@ -62,7 +104,7 @@ export const experiences = [
   },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: "aura",
     name: "MERLIN",
@@ -122,7 +164,7 @@ export const projects = [
   },
 ];
 
-export const achievements = [
+export const achievements: Achievement[] = [
   {
     title: "ICTAK Techathlon 2025",
     event: "ICT Academy of Kerala",

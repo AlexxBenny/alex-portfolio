@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { fadeInUp } from "../utils/motion.js";
+import { fadeInUp } from "@/lib/motion";
 
 const links = [
   {
@@ -35,7 +37,7 @@ const links = [
   },
 ];
 
-function Contact() {
+export default function Contact() {
   return (
     <section
       id="contact"
@@ -50,7 +52,7 @@ function Contact() {
         className="text-center"
       >
         <h2 className="text-3xl font-display font-semibold text-white tracking-tight">
-          Let's Connect
+          Let&apos;s Connect
         </h2>
         <p className="mt-3 max-w-md mx-auto text-base text-slate-400">
           Open to opportunities, collaborations, and conversations about AI systems.
@@ -96,5 +98,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

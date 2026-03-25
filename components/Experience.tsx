@@ -1,8 +1,10 @@
-import { motion } from "framer-motion";
-import { experiences } from "../data/projects.js";
-import { fadeInUp } from "../utils/motion.js";
+"use client";
 
-function Experience() {
+import { motion } from "framer-motion";
+import { experiences } from "@/lib/data/projects";
+import { fadeInUp } from "@/lib/motion";
+
+export default function Experience() {
   return (
     <section
       id="experience"
@@ -24,7 +26,6 @@ function Experience() {
       </motion.div>
 
       <div className="relative space-y-5 pl-6 md:pl-8">
-        {/* Timeline line */}
         <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent/30 via-white/10 to-transparent" />
 
         {experiences.map((exp, index) => (
@@ -37,7 +38,6 @@ function Experience() {
             custom={0.1 * index}
             className="relative group"
           >
-            {/* Timeline dot — glowing */}
             <div className="absolute -left-6 md:-left-8 top-5 flex items-center justify-center">
               <div className="h-3 w-3 rounded-full border-2 border-accent/50 bg-background group-hover:border-accent group-hover:shadow-[0_0_8px_rgba(96,165,250,0.4)] transition-all duration-300" />
             </div>
@@ -47,7 +47,6 @@ function Experience() {
               transition={{ type: "tween", duration: 0.2 }}
               className="rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03] overflow-hidden relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.03] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700"
             >
-              {/* Header row */}
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                 <div>
                   <p className="text-lg font-semibold text-white">
@@ -75,7 +74,6 @@ function Experience() {
                 </span>
               </div>
 
-              {/* Bullet points */}
               <ul className="space-y-2.5">
                 {exp.bullets.map((bullet, i) => (
                   <li
@@ -94,5 +92,3 @@ function Experience() {
     </section>
   );
 }
-
-export default Experience;

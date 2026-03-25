@@ -3,6 +3,8 @@ node_modules
 
 # Build output
 dist
+.next
+out
 
 # Logs
 npm-debug.log*
@@ -23,10 +25,11 @@ Thumbs.db
 .env.local
 .env.*.local
 
-# Vite / cache
-.vite
-*.local
+# Next.js
+next-env.d.ts
 
 # Vercel
 .vercel
 
+docs
+docs/

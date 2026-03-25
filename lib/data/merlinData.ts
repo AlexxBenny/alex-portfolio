@@ -1,21 +1,72 @@
-// MERLIN — Frontier product narrative data.
-// Written for conviction, not description.
+export interface MerlinGithub {
+  repo: string;
+  pip: string;
+  init: string;
+  run: string;
+}
 
-export const github = {
+export interface Stat {
+  value: string;
+  label: string;
+  sub: string;
+}
+
+export interface Layer {
+  id: string;
+  num: string;
+  name: string;
+  tag: string;
+  color: string;
+  desc: string;
+  parts: string[];
+}
+
+export interface PipelineNode {
+  label: string;
+  llm: boolean;
+  fork?: boolean;
+  branch?: string;
+}
+
+export interface VersusRow {
+  dimension: string;
+  typical: string;
+  merlin: string;
+}
+
+export interface Domain {
+  name: string;
+  count: number;
+  icon: string;
+  examples: string;
+}
+
+export interface TraceEntry {
+  t: string;
+  tag: string;
+  msg: string;
+}
+
+export interface Constraint {
+  rule: string;
+  detail: string;
+}
+
+export const github: MerlinGithub = {
   repo: "https://github.com/AlexxBenny/Merlin",
   pip: "pip install merlin-assistant",
   init: "merlin init",
   run: "merlin",
 };
 
-export const stats = [
+export const stats: Stat[] = [
   { value: "48", label: "Executable Skills", sub: "across 7 domains" },
   { value: "<100", label: "Milliseconds", sub: "reflex path latency" },
   { value: "4", label: "Cognitive Layers", sub: "strict separation" },
   { value: "10", label: "Dashboard Pages", sub: "full system visibility" },
 ];
 
-export const layers = [
+export const layers: Layer[] = [
   {
     id: "perception",
     num: "01",
@@ -54,7 +105,7 @@ export const layers = [
   },
 ];
 
-export const pipeline = [
+export const pipeline: PipelineNode[] = [
   { label: "User Input", llm: false },
   { label: "Perception", llm: false },
   { label: "BrainCore Router", llm: false, fork: true },
@@ -66,7 +117,7 @@ export const pipeline = [
   { label: "World Timeline", llm: false },
 ];
 
-export const versus = [
+export const versus: VersusRow[] = [
   {
     dimension: "Execution model",
     typical: "ReAct loop — reason → act → observe → repeat",
@@ -99,7 +150,7 @@ export const versus = [
   },
 ];
 
-export const domains = [
+export const domains: Domain[] = [
   { name: "System", count: 19, icon: "⚡", examples: "volume, brightness, apps, battery, media" },
   { name: "Browser", count: 12, icon: "🌐", examples: "click, navigate, scroll, autonomous task" },
   { name: "Email", count: 5, icon: "📧", examples: "read inbox, draft, send, search" },
@@ -112,13 +163,13 @@ export const domains = [
 export const missionIR = {
   id: "mission_a7f3c",
   nodes: [
-    { id: "n1", skill: "system.set_volume", inputs: { level: 40 }, depends_on: [], mode: "foreground" },
-    { id: "n2", skill: "system.set_brightness", inputs: { level: 70 }, depends_on: [], mode: "foreground" },
+    { id: "n1", skill: "system.set_volume", inputs: { level: 40 }, depends_on: [] as string[], mode: "foreground" },
+    { id: "n2", skill: "system.set_brightness", inputs: { level: 70 }, depends_on: [] as string[], mode: "foreground" },
   ],
   metadata: { ir_version: "1.0", parallel: true },
 };
 
-export const trace = [
+export const trace: TraceEntry[] = [
   { t: "00:00.000", tag: "INPUT", msg: "Percept: 'Set volume to 40 and brightness to 70'" },
   { t: "00:00.003", tag: "BRAIN", msg: "BrainCore → MISSION (multi-skill)" },
   { t: "00:00.015", tag: "COORD", msg: "Coordinator → SKILL_PLAN" },
@@ -130,7 +181,7 @@ export const trace = [
   { t: "00:00.850", tag: "DONE", msg: "Mission complete — 850ms" },
 ];
 
-export const constraints = [
+export const constraints: Constraint[] = [
   { rule: "No global mutable state", detail: "WorldTimeline is append-only. State is derived." },
   { rule: "Skills are isolated", detail: "No inter-skill calls. No DAG modification at runtime." },
   { rule: "One LLM call per plan", detail: "Cortex compiles once. No reasoning loops." },
