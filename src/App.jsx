@@ -40,7 +40,7 @@ function HomePage() {
       >
         {/* Navbar */}
         <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-black/80 backdrop-blur-md">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
             <button
               onClick={() => scrollToSection("hero")}
               className="text-sm font-display font-medium tracking-wide text-white hover:text-accent transition-colors"
@@ -63,7 +63,7 @@ function HomePage() {
         </header>
 
         {/* Main Content */}
-        <main className="relative mx-auto flex max-w-5xl flex-col gap-24 px-4 pb-16 pt-24 sm:px-6">
+        <main className="relative mx-auto flex max-w-6xl flex-col gap-24 px-4 pb-16 pt-24 sm:px-6">
           <Hero />
           <Skills />
           <Projects />
