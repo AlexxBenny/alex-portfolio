@@ -42,7 +42,9 @@ function Projects() {
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeInUp}
         custom={0.05}
-        className="group relative rounded-2xl border border-accent/15 bg-white/[0.02] overflow-hidden hover:border-accent/30 transition-all duration-300"
+        className="group relative rounded-2xl border border-accent/15 bg-white/[0.02] overflow-hidden hover:border-accent/30 transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.04] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 before:ease-in-out"
+        whileHover={{ y: -4 }}
+        transition={{ type: "tween", duration: 0.2 }}
       >
         {/* Top gradient shimmer */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
@@ -85,7 +87,7 @@ function Projects() {
             </div>
           </div>
 
-          <p className="text-sm leading-relaxed text-slate-300 mb-5 max-w-3xl">
+          <p className="text-sm leading-relaxed text-slate-200 mb-5 max-w-3xl">
             {featured.description}
           </p>
 
@@ -93,7 +95,7 @@ function Projects() {
             {featured.highlights.map((h, i) => (
               <div
                 key={i}
-                className="flex items-start gap-2.5 text-sm text-slate-400"
+                className="flex items-start gap-2.5 text-sm text-slate-300"
               >
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/50" />
                 {h}
@@ -132,7 +134,9 @@ function Projects() {
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeInUp}
               custom={0.06 * index}
-              className="group relative rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-white/10 transition-all duration-300 flex flex-col"
+              className="group relative rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden hover:border-white/10 transition-all duration-300 flex flex-col before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.05] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 before:ease-in-out before:z-10"
+              whileHover={{ y: -6 }}
+              transition={{ type: "tween", duration: 0.2 }}
             >
               {/* Top gradient bar */}
               <div className={`h-0.5 bg-gradient-to-r ${accent.gradient}`} />
@@ -150,21 +154,21 @@ function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-shrink-0 text-xs text-slate-600 hover:text-accent transition-colors"
+                      className="flex-shrink-0 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-slate-400 hover:text-white hover:border-white/20 transition-all"
                     >
-                      ↗
+                      GitHub ↗
                     </a>
                   )}
                 </div>
 
-                <p className="text-[15px] text-slate-400 leading-relaxed mb-4 flex-1">
+                <p className="text-[15px] text-slate-200 leading-relaxed mb-4 flex-1">
                   {project.description}
                 </p>
 
                 {/* Highlights */}
                 <ul className="space-y-1.5 mb-4">
                   {project.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-500">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
                       <span
                         className="mt-1 h-1 w-1 flex-shrink-0 rounded-full"
                         style={{ backgroundColor: accent.color + "80" }}

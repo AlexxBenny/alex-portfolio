@@ -23,9 +23,9 @@ function Experience() {
         </p>
       </motion.div>
 
-      <div className="relative space-y-8 pl-6 md:pl-8">
+      <div className="relative space-y-5 pl-6 md:pl-8">
         {/* Timeline line */}
-        <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-white/10" />
+        <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent/30 via-white/10 to-transparent" />
 
         {experiences.map((exp, index) => (
           <motion.div
@@ -35,41 +35,59 @@ function Experience() {
             viewport={{ once: true, amount: 0.4 }}
             variants={fadeInUp}
             custom={0.1 * index}
-            className="relative"
+            className="relative group"
           >
-            {/* Timeline dot */}
-            <div className="absolute -left-6 md:-left-8 top-1.5 flex items-center justify-center">
-              <div className="h-3 w-3 rounded-full border-2 border-accent/50 bg-background" />
+            {/* Timeline dot — glowing */}
+            <div className="absolute -left-6 md:-left-8 top-5 flex items-center justify-center">
+              <div className="h-3 w-3 rounded-full border-2 border-accent/50 bg-background group-hover:border-accent group-hover:shadow-[0_0_8px_rgba(96,165,250,0.4)] transition-all duration-300" />
             </div>
 
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-5 transition-colors duration-200 hover:border-white/10">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ type: "tween", duration: 0.2 }}
+              className="rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03] overflow-hidden relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.03] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700"
+            >
+              {/* Header row */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                 <div>
-                  <p className="text-base font-semibold text-white">
+                  <p className="text-lg font-semibold text-white">
                     {exp.role}
                   </p>
-                  <p className="text-sm text-accent">
-                    {exp.company}
-                    <span className="text-slate-500"> · {exp.location}</span>
-                  </p>
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <span className="text-sm font-medium text-accent">{exp.company}</span>
+                    <span className="text-slate-600">·</span>
+                    <span className="text-sm text-slate-500">{exp.location}</span>
+                    {exp.link && (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/[0.06] px-3 py-0.5 text-[11px] font-medium text-accent hover:bg-accent/15 hover:border-accent/40 transition-all"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        See it live · {exp.link.replace("https://", "")} ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <p className="text-sm text-slate-500 font-mono">
+                <span className="text-sm text-slate-600 font-mono flex-shrink-0">
                   {exp.period}
-                </p>
+                </span>
               </div>
 
-              <ul className="space-y-2">
+              {/* Bullet points */}
+              <ul className="space-y-2.5">
                 {exp.bullets.map((bullet, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-sm text-slate-400"
+                    className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed"
                   >
-                    <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-white/30" />
+                    <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-accent/40" />
                     {bullet}
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

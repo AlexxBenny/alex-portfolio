@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { achievements } from "../data/projects.js";
 import { fadeInUp } from "../utils/motion.js";
 
-const icons = ["🏆", "🥉", "🏆", "🏆"];
-
 function Achievements() {
   return (
     <section
@@ -25,19 +23,46 @@ function Achievements() {
         </p>
       </motion.div>
 
-      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {achievements.map((item, i) => (
           <motion.div
             key={i}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp}
-            custom={0.06 * i}
-            className="group rounded-xl border border-white/5 bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-500/20 hover:bg-white/[0.03] text-center"
+            custom={0.08 * i}
+            whileHover={{ y: -6 }}
+            transition={{ type: "tween", duration: 0.2 }}
+            className="group relative rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden transition-all duration-300 hover:border-white/10"
           >
-            <span className="text-2xl mb-3 block">{icons[i] || "✦"}</span>
-            <p className="text-sm font-medium text-slate-300 leading-snug">{item}</p>
+            {/* Photo */}
+            <div className="relative h-44 overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+
+            {/* Info */}
+            <div className="p-4">
+              <p className="text-sm font-semibold text-white leading-snug">
+                {item.title}
+              </p>
+              {item.event && (
+                <p className="text-xs text-slate-500 mt-1">{item.event}</p>
+              )}
+              <span className={`inline-block mt-2.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                item.place === "Winner"
+                  ? "bg-amber-500/15 text-amber-300 border border-amber-500/25"
+                  : "bg-white/5 text-slate-400 border border-white/10"
+              }`}>
+                {item.place === "Winner" ? "🏆 Winner" : `🥉 ${item.place}`}
+              </span>
+            </div>
           </motion.div>
         ))}
       </div>

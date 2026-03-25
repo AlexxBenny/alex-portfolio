@@ -49,8 +49,11 @@ function Hero() {
           custom={0}
           className="flex justify-center md:justify-start"
         >
-          <div className="relative">
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent/20 to-transparent blur-md" />
+          <div className="relative group">
+            {/* Outer glow ring */}
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-accent/30 via-violet-500/20 to-transparent blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Subtle rotating border ring */}
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent/25 to-violet-500/15" />
             <img
               src="/Alex_passport.jpg"
               alt="Alex Benny"
@@ -69,41 +72,71 @@ function Hero() {
           className="space-y-6 text-center md:text-left"
         >
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-white">
-              Alex Benny
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="font-mono text-xs text-accent/70 tracking-widest uppercase mb-3"
+            >
+              AI Engineer · System Builder
+            </motion.p>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
+              <span className="text-white">Alex</span>{" "}
+              <span className="bg-gradient-to-r from-accent via-blue-400 to-violet-400 bg-clip-text text-transparent">
+                Benny
+              </span>
             </h1>
-            <p className="mt-2 text-lg text-accent font-medium">
-              AI & Software Developer
-            </p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mt-4 max-w-lg text-base leading-relaxed text-slate-400 mx-auto md:mx-0"
+            >
+              I build systems that translate intent into real-world actions —
+              deterministic architectures, not prompt chains. Currently pursuing
+              B.Tech in AI & Data Science, focused on automation, NLP, and
+              systems that ship.
+            </motion.p>
           </div>
 
-          <p className="max-w-lg text-base leading-relaxed text-slate-400 mx-auto md:mx-0">
-            AI engineer developing systems that translate intent into real-world actions, currently pursuing B.Tech in AI & Data Science.
-            Focused on automation, NLP, and deployable systems.
-          </p>
+          {/* Education badges */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-2 text-xs justify-center md:justify-start"
+          >
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-slate-400">
+              {education.degree}
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-slate-500">
+              {education.location}
+            </span>
+          </motion.div>
 
-          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 justify-center md:justify-start">
-            <span>{education.institution}</span>
-            <span className="hidden sm:inline">·</span>
-            <span>{education.location}</span>
-            <span className="hidden sm:inline">·</span>
-          </div>
-
-          <div className="flex items-center gap-4 justify-center md:justify-start pt-2">
+          {/* Social buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="flex items-center gap-3 justify-center md:justify-start pt-1"
+          >
             {socials.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target={s.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noreferrer"
-                className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-slate-300 transition-all duration-200 hover:border-accent/40 hover:text-white hover:bg-white/[0.06]"
+                className="group/btn flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-slate-300 transition-all duration-200 hover:border-accent/30 hover:text-white hover:bg-white/[0.06] hover:-translate-y-0.5"
                 aria-label={s.label}
               >
                 {s.icon}
                 <span>{s.label}</span>
               </a>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

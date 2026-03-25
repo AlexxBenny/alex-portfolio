@@ -39,6 +39,7 @@ export const experiences = [
     id: "recode",
     role: "Software Developer Intern",
     company: "Recode AI Solutions",
+    link: "https://keelzo.com",
     location: "Kerala, India",
     period: "Nov 2025 – Present",
     bullets: [
@@ -122,8 +123,28 @@ export const projects = [
 ];
 
 export const achievements = [
-  "Winner — ICTAK Techathlon 2025",
-  "3rd Place — National-Level Gen AI Hackathon (amFOSS)",
-  "Winner — Eden Hackathon 4.0",
-  "Winner — INNOVISION 2K25",
+  {
+    title: "ICTAK Techathlon 2025",
+    event: "ICT Academy of Kerala",
+    place: "Winner",
+    image: "/Techathlon.JPG",
+  },
+  {
+    title: "National-Level Gen AI Hackathon",
+    event: "amFOSS · Hexinox",
+    place: "3rd Place",
+    image: "/hexinox.jpg",
+  },
+  {
+    title: "Eden Hackathon 4.0",
+    event: "Marian IEDC Trivandrum",
+    place: "Winner",
+    image: "/Eden.jpg",
+  },
+  {
+    title: "INNOVISION 2K25",
+    event: "ICET Muvattupuzha",
+    place: "Winner",
+    image: "/Innovision.jpg",
+  },
 ];
