@@ -45,7 +45,7 @@ export default function Experience() {
             <motion.div
               whileHover={{ y: -2 }}
               transition={{ type: "tween", duration: 0.2 }}
-              className="rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03] overflow-hidden relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.03] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700"
+              className="rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03] overflow-hidden relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.05] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 before:ease-in-out before:z-10"
             >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                 <div>

@@ -85,9 +85,13 @@ export default function Hero() {
               AI Engineer · System Builder
             </motion.p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
-              <span className="text-white">Alex</span>{" "}
-              <span className="bg-gradient-to-r from-accent via-blue-400 to-violet-400 bg-clip-text text-transparent">
+            <h1 className="relative text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
+              {/* Scanning line */}
+              <span className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                <span className="animate-scan-line absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+              </span>
+              <span className="relative text-white">Alex</span>{" "}
+              <span className="relative bg-gradient-to-r from-accent via-blue-400 to-violet-400 bg-clip-text text-transparent">
                 Benny
               </span>
             </h1>
@@ -102,6 +106,7 @@ export default function Hero() {
               deterministic architectures, not prompt chains. Currently pursuing
               B.Tech in AI & Data Science, focused on automation, NLP, and
               systems that ship.
+              <span className="inline-block w-[2px] h-[1em] bg-accent/70 ml-1 align-text-bottom animate-cursor-blink" aria-hidden="true" />
             </motion.p>
           </div>
 

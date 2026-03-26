@@ -18,7 +18,7 @@ const scrollToSection = (id: string) => {
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-black/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-40 bg-black/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <button
           onClick={() => scrollToSection("hero")}
@@ -39,6 +39,15 @@ export default function Navbar() {
           ))}
         </nav>
       </div>
+      {/* Data‑stream gradient line */}
+      <div
+        className="h-px animate-data-stream"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, transparent 0%, #60a5fa 25%, #a78bfa 50%, #22d3ee 75%, transparent 100%)",
+        }}
+        aria-hidden="true"
+      />
     </header>
   );
 }

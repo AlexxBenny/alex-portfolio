@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import StarBackground from "@/components/StarBackground";
+import SystemsBackground from "@/components/SystemsBackground";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-background text-slate-100 font-sans">
-      <StarBackground />
+      <SystemsBackground />
 
       <div className="relative z-10">
         <Navbar />
