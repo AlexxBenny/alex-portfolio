@@ -82,7 +82,7 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="font-mono text-xs text-accent/70 tracking-widest uppercase mb-3"
             >
-              AI Engineer · System Builder
+              AI Systems Engineer | Building Agentic AI & Autonomous Software Systems
             </motion.p>
 
             <h1 className="relative text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
