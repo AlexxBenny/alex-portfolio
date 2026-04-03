@@ -94,24 +94,35 @@ export default function Navbar() {
         aria-hidden="true"
       />
 
-      {/* Mobile drawer */}
+      {/* Mobile backdrop overlay */}
       <div
-        className={`fixed inset-x-0 top-[65px] bottom-0 z-40 bg-black/95 backdrop-blur-xl transition-all duration-300 sm:hidden ${
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 sm:hidden ${
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Mobile slide-in panel */}
+      <div
+        className={`fixed top-[65px] right-0 z-50 h-auto max-h-[calc(100vh-65px)] w-56 rounded-bl-2xl border-l border-b border-white/10 bg-black/70 backdrop-blur-2xl transition-all duration-300 sm:hidden ${
+          mobileOpen
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0"
+        }`}
       >
-        <nav className="flex flex-col items-center gap-1 px-6 pt-8">
+        <nav className="flex flex-col py-4 px-2">
           {sections.map((section, i) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
-              className={`w-full rounded-lg px-4 py-4 text-center text-lg font-display tracking-wide text-slate-300 transition-all duration-200 hover:bg-white/[0.06] hover:text-white active:scale-[0.98] ${
+              className={`rounded-lg px-5 py-3.5 text-right text-[15px] font-display tracking-wide text-slate-300 transition-all duration-200 hover:bg-white/[0.08] hover:text-white active:scale-[0.97] ${
                 mobileOpen ? "animate-fade-in-up" : ""
               }`}
               style={{
-                animationDelay: `${i * 60}ms`,
+                animationDelay: `${i * 50}ms`,
                 animationFillMode: "both",
               }}
             >
