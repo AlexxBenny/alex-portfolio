@@ -11,6 +11,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Offset for fixed navbar when using scrollIntoView */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 body {
   min-height: 100vh;
   /* Radial depth gradient — dark blue‑black center fading to pure black */
@@ -85,4 +90,15 @@ html {
 }
 .hover-pulse-glow:hover {
   animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile nav drawer — staggered fade-in                               */
+/* ------------------------------------------------------------------ */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.35s ease-out;
 }
