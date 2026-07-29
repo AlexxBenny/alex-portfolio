@@ -26,7 +26,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-24 space-y-10 border-t border-white/5 pt-16"
+      className="relative scroll-mt-24 space-y-10 border-t border-black/10 pt-16"
     >
       <motion.div
         initial="hidden"
@@ -35,10 +35,10 @@ export default function Skills() {
         variants={fadeInUp}
         custom={0}
       >
-        <h2 className="text-3xl font-display font-semibold text-white tracking-tight">
+        <h2 className="text-3xl font-display font-semibold text-[#111111] tracking-tight">
           Technical Skills
         </h2>
-        <p className="mt-3 max-w-xl text-base text-slate-400">
+        <p className="mt-3 max-w-xl text-base text-[#6B7280]">
           Core technologies and tools across the AI and software stack.
         </p>
       </motion.div>
@@ -47,12 +47,10 @@ export default function Skills() {
         {/* Subtle connecting gradient lines behind cards */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
-          <div className="absolute left-1/3 top-[10%] bottom-[10%] w-px bg-gradient-to-b from-transparent via-glow-violet/10 to-transparent hidden lg:block" />
-          <div className="absolute left-2/3 top-[10%] bottom-[10%] w-px bg-gradient-to-b from-transparent via-glow-cyan/10 to-transparent hidden lg:block" />
         </div>
 
         {skills.map((group, i) => {
-          const meta = categoryMeta[group.category] || { accent: "#94a3b8", icon: "●" };
+          const meta = categoryMeta[group.category] || { accent: "#2563EB", icon: "●" };
           return (
             <motion.div
               key={group.category}
@@ -63,7 +61,7 @@ export default function Skills() {
               custom={0.05 * i}
               whileHover={{ y: -4 }}
               transition={{ type: "tween", duration: 0.2 }}
-              className="group relative rounded-xl border border-white/5 bg-white/[0.02] p-5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04] overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/[0.05] before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700 before:ease-in-out before:z-10"
+              className="group relative rounded-xl border border-black/10 bg-white p-5 shadow-sm transition-all duration-300 hover:border-black/20 hover:shadow-md overflow-hidden"
             >
               {/* Top accent gradient bar */}
               <div
@@ -80,12 +78,11 @@ export default function Skills() {
                   style={{
                     backgroundColor: `${meta.accent}15`,
                     color: meta.accent,
-                    boxShadow: `0 0 12px ${meta.accent}20`,
                   }}
                 >
                   {meta.icon}
                 </span>
-                <p className="text-sm font-semibold text-white tracking-wide">
+                <p className="text-sm font-semibold text-[#111111] tracking-wide">
                   {group.category}
                 </p>
               </div>
@@ -102,17 +99,7 @@ export default function Skills() {
                   <motion.span
                     key={skill}
                     variants={chipAnim}
-                    className="rounded-md border px-3 py-1.5 text-[13px] font-medium transition-all duration-200 hover:scale-105 cursor-default"
-                    style={{
-                      borderColor: `${meta.accent}20`,
-                      backgroundColor: `${meta.accent}08`,
-                      color: "#cbd5e1",
-                    }}
-                    whileHover={{
-                      backgroundColor: `${meta.accent}18`,
-                      borderColor: `${meta.accent}40`,
-                      color: "#f1f5f9",
-                    }}
+                    className="rounded-md border border-black/10 bg-[#FAFAF7] px-3 py-1.5 text-[13px] font-medium text-[#111111] transition-all duration-200 hover:scale-105 cursor-default hover:border-accent hover:text-accent"
                   >
                     {skill}
                   </motion.span>

@@ -42,85 +42,85 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-[85vh] items-center pb-12 pt-8"
     >
-      <div className="grid gap-12 md:gap-16 md:grid-cols-[auto_1fr] items-center w-full">
-        {/* Profile Photo */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInUp}
-          custom={0}
-          className="flex justify-center md:justify-start"
-        >
-          <div className="relative group">
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-accent/30 via-violet-500/20 to-transparent blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent/25 to-violet-500/15" />
-            <Image
-              src="/Alex_passport.jpg"
-              alt="Alex Benny — AI Systems Engineer"
-              width={256}
-              height={256}
-              priority
-              className="relative h-52 w-52 md:h-64 md:w-64 rounded-full object-cover border-2 border-white/10"
-            />
-          </div>
-        </motion.div>
+      <div className="flex flex-col gap-10 w-full">
+        {/* Top Hero Row: 3D Photo + Name & Intro */}
+        <div className="grid gap-8 md:gap-12 grid-cols-1 md:grid-cols-[auto_1fr] items-center">
+          {/* Profile Photo - Ultra-Clean Rounded Square */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={fadeInUp}
+            custom={0}
+            className="flex justify-center md:justify-start"
+          >
+            <div className="relative group w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72">
+              {/* Soft modern ambient backdrop blur */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-accent/20 to-black/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* About */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInUp}
-          custom={0.1}
-          className="space-y-6 text-center md:text-left"
-        >
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="font-mono text-xs text-accent/70 tracking-widest uppercase mb-3"
-            >
-              AI Systems Engineer | Building Agentic AI & Autonomous Software Systems
-            </motion.p>
+              {/* Clean Single Image Card (Rounded Square) */}
+              <div className="relative h-full w-full rounded-2xl border border-black/10 bg-white overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_16px_50px_rgba(37,99,235,0.1)]">
+                <Image
+                  src="/Alex_passport.jpg"
+                  alt="Alex Benny — AI Systems Engineer"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 288px"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-102"
+                />
+              </div>
+            </div>
+          </motion.div>
 
-            <h1 className="relative text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-[1.1]">
-              {/* Scanning line */}
-              <span className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                <span className="animate-scan-line absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
-              </span>
-              <span className="relative text-white">Alex</span>{" "}
-              <span className="relative bg-gradient-to-r from-accent via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                Benny
-              </span>
+          {/* Name & Side Content Grid */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={fadeInUp}
+            custom={0.1}
+            className="grid gap-6 grid-cols-1 lg:grid-cols-[auto_1fr] items-center text-center md:text-left"
+          >
+            {/* Giant ALEX BENNY Name matched to Photo Height */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tight leading-[0.9] text-[#111111] uppercase flex flex-col justify-between">
+              <span>ALEX</span>
+              <span className="text-accent">BENNY</span>
             </h1>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-4 max-w-lg text-base leading-relaxed text-slate-400 mx-auto md:mx-0"
-            >
-              I build systems that translate intent into real-world actions —
-              deterministic architectures, not prompt chains. Currently pursuing
-              B.Tech in AI & Data Science, focused on automation, NLP, and
-              systems that ship.
-              <span className="inline-block w-[2px] h-[1em] bg-accent/70 ml-1 align-text-bottom animate-cursor-blink" aria-hidden="true" />
-            </motion.p>
-          </div>
+            {/* Description Text positioned to the right of the giant name */}
+            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[#6B7280] border-l-0 lg:border-l lg:border-black/10 lg:pl-6">
+              <p className="font-semibold text-[#111111] text-base sm:text-lg">
+                Systems Engineer at TCS.
+              </p>
 
+              <p>
+                Building AI agents, <br className="hidden sm:block" />
+                computer vision systems, <br className="hidden sm:block" />
+                and automation software.
+              </p>
+
+              <p className="text-xs sm:text-sm">
+                Previously built MERLIN, <br className="hidden sm:block" />
+                Smart Glasses, Curabot, <br className="hidden sm:block" />
+                and multiple hackathon-winning projects.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Row: Badges & Social Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-black/10 pt-6">
           {/* Education badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-2 text-xs justify-center md:justify-start"
+            className="flex flex-wrap items-center gap-2 text-xs justify-center sm:justify-start"
           >
-            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-slate-400">
+            <span className="rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[#6B7280]">
               {education.degree}
             </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-slate-500">
+            <span className="rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-[#6B7280]">
               {education.location}
             </span>
           </motion.div>
@@ -130,7 +130,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex items-center gap-3 justify-center md:justify-start pt-1"
+            className="flex items-center gap-3 justify-center sm:justify-end"
           >
             {socials.map((s) => (
               <a
@@ -138,7 +138,7 @@ export default function Hero() {
                 href={s.href}
                 target={s.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noreferrer"
-                className="group/btn flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-slate-300 transition-all duration-200 hover:border-accent/30 hover:text-white hover:bg-white/[0.06] hover:-translate-y-0.5"
+                className="group/btn flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm text-[#111111] shadow-sm transition-all duration-200 hover:border-accent/40 hover:text-accent hover:-translate-y-0.5"
                 aria-label={s.label}
               >
                 {s.icon}
@@ -146,7 +146,7 @@ export default function Hero() {
               </a>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

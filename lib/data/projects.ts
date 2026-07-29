@@ -78,12 +78,25 @@ export const skills: SkillGroup[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    id: "tcs",
+    role: "Systems Engineer",
+    company: "Tata Consultancy Services (TCS)",
+    location: "Kolkata, India",
+    period: "Jun 2026 – Present",
+    bullets: [
+      "Systems Engineer.",
+      "Undergoing Initial Learning Program (ILP) with a focus on Data Science and Machine Learning.",
+      "Building expertise in Python, SQL, data analysis, and enterprise software development.",
+      "Working with industry-standard tools and software engineering practices.",
+    ],
+  },
+  {
     id: "recode",
     role: "Software Developer Intern",
     company: "Recode AI Solutions",
     link: "https://keelzo.com",
     location: "Kerala, India",
-    period: "Nov 2025 – Present",
+    period: "Nov 2025 – May 2026",
     bullets: [
       "Identified and eliminated redundant API polling loops, reducing request volume by 60–70%.",
       "Designed and implemented multi-environment CI/CD pipelines using GitHub Actions and Azure.",
@@ -188,5 +201,11 @@ export const achievements: Achievement[] = [
     event: "ICET Muvattupuzha",
     place: "Winner",
     image: "/Innovision.jpg",
+  },
+  {
+    title: "AI Friday Hackathon",
+    event: "AI Friday",
+    place: "Runner-Up",
+    image: "/AI_Friday_RunnerUp.jpeg",
   },
 ];

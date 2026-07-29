@@ -4,8 +4,8 @@
 
 html,
 body {
-  background-color: #000000;
-  color: #f1f5f9;
+  background-color: #FAFAF7;
+  color: #111111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -18,11 +18,7 @@ section[id] {
 
 body {
   min-height: 100vh;
-  /* Radial depth gradient — dark blue‑black center fading to pure black */
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(15, 23, 42, 0.35) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(30, 27, 75, 0.18) 0%, transparent 60%),
-    #000000;
+  background: #FAFAF7;
 }
 
 /* ------------------------------------------------------------------ */
@@ -102,3 +98,31 @@ html {
 .animate-fade-in-up {
   animation: fade-in-up 0.35s ease-out;
 }
+
+/* ------------------------------------------------------------------ */
+/* 3D Cube Profile Container & Animations                              */
+/* ------------------------------------------------------------------ */
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes cube-rotate-float {
+  0% {
+    transform: rotateX(-6deg) rotateY(11deg) rotateZ(-2deg) translateY(0px);
+  }
+  50% {
+    transform: rotateX(-4deg) rotateY(6deg) rotateZ(0deg) translateY(-8px);
+  }
+  100% {
+    transform: rotateX(-6deg) rotateY(11deg) rotateZ(-2deg) translateY(0px);
+  }
+}
+
+.animate-cube-float {
+  animation: cube-rotate-float 7s ease-in-out infinite;
+}
+

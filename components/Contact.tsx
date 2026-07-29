@@ -41,7 +41,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 space-y-10 border-t border-white/5 pt-16"
+      className="relative scroll-mt-24 space-y-10 border-t border-black/10 pt-16"
     >
       <motion.div
         initial="hidden"
@@ -51,10 +51,10 @@ export default function Contact() {
         custom={0}
         className="text-center"
       >
-        <h2 className="text-3xl font-display font-semibold text-white tracking-tight">
+        <h2 className="text-3xl font-display font-semibold text-[#111111] tracking-tight">
           Let&apos;s Connect
         </h2>
-        <p className="mt-3 max-w-md mx-auto text-base text-slate-400">
+        <p className="mt-3 max-w-md mx-auto text-base text-[#6B7280]">
           Open to opportunities, collaborations, and conversations about AI systems.
         </p>
       </motion.div>
@@ -75,14 +75,14 @@ export default function Contact() {
             rel="noreferrer"
             whileHover={{ y: -3 }}
             transition={{ type: "tween", duration: 0.2 }}
-            className="group flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-6 py-4 transition-all duration-300 hover:border-accent/20 hover:bg-white/[0.04]"
+            className="group flex items-center gap-4 rounded-xl border border-black/10 bg-white shadow-sm px-6 py-4 transition-all duration-300 hover:border-accent/40 hover:shadow-md"
           >
-            <span className="text-slate-500 group-hover:text-accent transition-colors duration-300">
+            <span className="text-[#6B7280] group-hover:text-accent transition-colors duration-300">
               {link.icon}
             </span>
             <div className="text-left">
-              <p className="text-xs font-mono text-slate-600 uppercase tracking-wider">{link.label}</p>
-              <p className="text-sm text-slate-300 group-hover:text-white transition-colors">
+              <p className="text-xs font-mono text-[#6B7280] uppercase tracking-wider">{link.label}</p>
+              <p className="text-sm font-medium text-[#111111] group-hover:text-accent transition-colors">
                 {link.display}
               </p>
             </div>
@@ -90,8 +90,8 @@ export default function Contact() {
         ))}
       </motion.div>
 
-      <div className="border-t border-white/5 pt-8 pb-4">
-        <p className="text-xs text-slate-600 text-center">
+      <div className="border-t border-black/10 pt-8 pb-4">
+        <p className="text-xs text-[#6B7280] text-center">
           © {new Date().getFullYear()} Alex Benny · Kerala, India
         </p>
       </div>
