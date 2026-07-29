@@ -101,8 +101,7 @@ export default function Hero() {
 
               <p className="text-xs sm:text-sm">
                 Previously built MERLIN, <br className="hidden sm:block" />
-                Smart Glasses, Curabot, <br className="hidden sm:block" />
-                and multiple hackathon-winning projects.
+                Smart Glasses, Curabot. <br className="hidden sm:block" />
               </p>
             </div>
           </motion.div>
