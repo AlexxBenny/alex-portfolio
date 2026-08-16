@@ -60,7 +60,7 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "AI Infrastructure",
-    items: ["Vector Databases (Chroma)", "Model Integration", "Retrieval Systems"],
+    items: ["Vector Databases", "Model Integration", "Retrieval Systems"],
   },
   {
     category: "Software & Backend",

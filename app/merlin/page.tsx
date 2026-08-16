@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function MerlinPage() {
   return (
-    <div className="relative min-h-screen bg-background text-slate-100 font-sans">
+    <div className="relative min-h-screen bg-background text-[#111111] font-sans">
       <StarBackground />
       <MerlinContent />
     </div>
